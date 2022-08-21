@@ -1,0 +1,16 @@
+Aula 01 - Criando Projeto
+
+-> para criar um projeto novo no react, vamos até a pasta onde você quer que seja criado o projeto pelo cmd ou pelo powershell e digitar:
+
+-> npx create-react-app fundamentos-react
+
+► o npx é um comando temporário apenas para criar o projeto
+► o create-react-app é o comando que vai criar o projeto
+►  o fundamentos-react é o nome do projeto
+
+
+-> Após isso entrar na pasta do projeto, exemplo cd fundamentos-react
+
+-> e após isso dentro da pasta digitar npm start para iniciar o projeto
+
+-> Vai ser criado o projeto com todos os componentes react já.

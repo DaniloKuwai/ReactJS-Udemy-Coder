@@ -1,0 +1,22 @@
+Agora vamos começar a entender um pouco do JSX, no código anterior digitammos apenas uma string entre '', porém se quisermos utilizar de uma forma
+diferente com cara de html precisamos usar jsx, exemplo, se tentarmos rodar diretamente esse código:
+
+ReactDOM.render(
+    <div>Olá React!</div>,
+    document.getElementById('root')
+    )
+
+Para usar esse tipo de sintaxe devemos dar um import React from 'react' para ele converter esse código direto como html
+
+Outro exemplo de código que podemos fazer, usando variáveis Agora
+
+const tag = <strong>Olá React!</strong>
+
+ReactDOM.render(
+    <div>
+       {tag}     
+    </div>,
+    document.getElementById('root')
+    )
+
+podemos usar variáveis também para jogar no html

@@ -1,0 +1,7 @@
+Para carregar o css na nossa página primeiro criamos no src na mesma pasta, mas na verdade tanto faz, basta apontar na hora do import onde está o arquivo.css, porém na aula
+fazemos dessa forma mesmo. Criamos um index.css
+
+colocamos os estilos css normalmente e dentro da nossa index.js fazemos o import
+
+import './index.css', no caso não precisamos usar o from, porquê não estamos querendo pegar nenhum valor dentro do nosso arquivo index.css
+estamos querendo apenas carregar ele.

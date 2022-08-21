@@ -1,0 +1,18 @@
+Para começar a fazer algo, vamos pegar primeiro dentro do nosso src na nossa index.js, e vamos começar a fazer ela a interagir com algumas bibliotecas importantes, a primeira dela é a react-dom, que nada mais é que a estrutura da nossa página html
+
+para isso, dentro do index.js devemos dar um:
+
+
+
+import ReactDOM from 'react-dom'
+
+Após isso vamos digitar os seguintes comandos
+
+const el = document.getElementById('root')
+
+ReactDOM.render('Olá React',el)
+
+-> Essa constante que eestamos criando é para pegar da nossa pasta public no nosso index.html(que é um dos arquivos mais importantes dessa pasta) a div que possui o nosso id=root, e nós estamos injetando nossa aplicação dentro dessa div para ser mostrado para o usuário.
+
+
+-> Depois digitamos ReactDOM.render(o render é o método que vai renderizar o que estámos digitando e ele espera 2 parâmetros)(o que vai ser mostrado, no caso é a string 'Olá React' e o chamado a nossa  constante que é nosso id root que é o el)
