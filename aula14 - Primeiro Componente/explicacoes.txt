@@ -1,0 +1,26 @@
+Para criar um componente por boas práticas o nomee do arquivo sempre se inicia com maiúsculos
+
+Dentro dele vamos criar uma função comum em js
+
+export default function Primeiro(){
+    return 'Primeiro Componente'
+}
+
+porém no react precisamos exportar ela primeiro para conseguir utilizar ela depois, por isso colocamos o export default
+
+Para utilizar ele dentro do nosso index.js
+
+primeiro precisamos importar ele, fazemos dessa forma:
+
+import Primeiro from './components/basicos/Primeiro'
+
+e para utilizar um componente, colocamos ele como se fosse uma tag html dessa forma:
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>// Aqui ele já vai puxar o que escrevemos naquela função     
+    </div>,
+    document.getElementById('root')
+    )
+
