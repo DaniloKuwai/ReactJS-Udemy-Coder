@@ -14,3 +14,7 @@ Aula 01 - Criando Projeto
 -> e após isso dentro da pasta digitar npm start para iniciar o projeto
 
 -> Vai ser criado o projeto com todos os componentes react já.
+
+-> entrar na pasta do projeto por exemplo o meu é o fundamentos-react e dar o comando npm start para abrir no browser
+
+-> para iniciar dar um npm start para abrir o projeto no navegador

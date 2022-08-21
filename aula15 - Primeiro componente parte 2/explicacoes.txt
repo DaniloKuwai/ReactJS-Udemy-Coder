@@ -1,0 +1,38 @@
+Para utilizar html em um componente diretamente, devemos fazer um import react para conseguir converter
+o nosso html usando react, para isso devemos dentro do componente fazer o import
+
+import React from 'react'
+
+export default function Primeiro(){
+    return <div>
+    <h2>Primeiro Componente</h2>
+    </div>
+}
+
+porém tem algumas observações, o componente funciona quando no return está na mesma linha da tag html, porém caso deixarmos 
+para baixo não vai funcionar. Para isso devemos colocar a div como se fosse parâmetros de uma função. Dessa forma:
+
+import React from 'react'
+
+export default function Primeiro(){
+    return (
+    <div>
+    <h2>Primeiro Componente</h2>
+    </div>
+    )
+}
+
+
+Vamos fazer um trecho jsx
+
+import React from 'react'
+
+export default function Primeiro(){
+    const msg = 'Seja Bem vindo(a)!'
+    return (
+    <div>
+    <h2>Primeiro Componente</h2>
+        <p>{msg}</p>
+    </div>
+    )
+}
