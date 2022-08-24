@@ -1,0 +1,194 @@
+Componentes com propriedades ou componentes funcionais
+
+Os componentes com propriedades ou funcionais, são componentes baseados em funções ou em classes.
+
+Agora nessa aula vamos começar a usar arquivos no jsx, na verdade para o React não faz diferença, porém para
+o vscode faz diferença porquê por exemplo quando escrevemos div no arquivo jsx ele já completa como div, no 
+js não, porém todos vão ser interpretados da mesma forma.
+
+
+Vamos criar dentro de components basicos um novo arquivo chamado ComParametro.jsx
+
+dentro dele vamos criar uma função sempre exportando para podermos utilizar dessa forma:
+
+
+------------------------------------------------------------------
+import React from "react"
+
+
+export default function ComParametro() {
+    return (
+    <div>
+        <h2>Titulo</h2>
+        <h3>Subtitulo</h3>
+    </div>
+    )
+}
+
+E colocamos ele no nosso index.js dessa forma:
+
+import './index.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>
+       <ComParametro></ComParametro>     
+    </div>,
+    document.getElementById('root')
+    )
+
+
+Ou também podemos colocar dessa outra forma:
+
+
+Dentrro do meu index.js, posso definir ids para as minhas tags html igual o normal, ou titulos e subtitulos, dessa forma,
+e fechar  de uma forma diferente, dessa forma:
+
+import './index.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>
+       <ComParametro titulo="Segundo Componente" subtitulo="Muito legal"/>     
+    </div>,
+    document.getElementById('root')
+    )
+
+Observe que se eu quiser acessar os atributos do titulo e subtitulo da minha comParametro é igual no js, para acessar os parametros eu tenho 
+que passar um parâmetro na minha funçãoo ComParametro(), e para acessar tenho que colocar entre {}  para o programa entender, se não ele vai
+ficar apenas um texto e não um parâmetro da função.
+
+import React from "react"
+
+
+export default function ComParametro(params) {
+    
+    return (
+    <div>
+        <h2>{params.Titulo}</h2>
+        <h3>{params.Subtitulo}</h3>
+    </div>
+    )
+}
+
+
+Porém em vez de parâmetros por padrão usamos props para acessar os parâmetros, fica dessa forma no nosso arquivo comParametro.jsx:
+
+import React from "react"
+
+
+export default function ComParametro(props) {
+    
+    return (
+    <div>
+        <h2>{props.titulo}</h2>
+        <p>{props.aluno}</p>
+        <p>{props.nota}</p>
+    </div>
+    )
+}
+
+Ajustando o código para ficar melhor
+
+import React from "react"
+
+
+export default function ComParametro(props) {
+    
+    return (
+    <div>
+        <h2>{props.titulo}</h2>
+        <p>
+        <strong>{props.aluno} </strong>
+        tem nota
+
+        <strong>{props.nota} </strong>
+        </p>
+    </div>
+    )
+}
+
+se aplicarmos o console.log em props só para ver como traz ele traz igual um array
+
+aluno: "Matheus"
+​
+nota: "10"
+​
+titulo: "Notas alunos"
+
+----------------------------------------------
+Estamos mandando as informações para o nosso arquivo principal o index.js
+
+import './index.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>
+       <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10"/>     
+    </div>,
+    document.getElementById('root')
+    )
+
+----------------------------------------------
+
+Para mostrar bem a ideia do componente podemos adicionar mais uma linha  no nosso index.js
+
+import './index.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>
+       <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10"/>
+       <ComParametro titulo="Notas alunos" aluno="Laura" nota="8"/>     
+    </div>,
+    document.getElementById('root')
+    )
+
+Tornando bem mais fácil a implementação de informações    
+
+------------------------------------------
+
+Podemos também colocar condicionais na função, dessa forma:
+
+import React from "react"
+
+
+export default function ComParametro(props) {
+    const status = props.nota >= 7 ? 'Aprovado' : 'Recuperação'
+    return (
+    <div>
+        <h2>{props.titulo}</h2>
+        <p>
+        <strong>{props.aluno} </strong>
+        tem nota
+        <strong>{props.nota} </strong>
+        e foi
+        <strong>{status}</strong>
+        </p>
+    </div>
+    )
+}
