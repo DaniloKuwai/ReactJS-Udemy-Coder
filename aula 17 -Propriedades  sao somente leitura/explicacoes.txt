@@ -1,0 +1,29 @@
+Uma observação importante é que não conseguimos alterar os valores de propriedades que é somente leitura
+que passamos para nossas propriedades, exemplo:
+
+import './index.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+
+
+ReactDOM.render(
+    <div>
+       <Primeiro></Primeiro>
+       <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10"/>
+       <ComParametro titulo="Notas alunos" aluno="Laura" nota="8"/>     
+    </div>,
+    document.getElementById('root')
+    )
+
+se tentarmos alterar as notas dos alunos por exemplo dessa forma:
+
+props.nota = math.ceil(props.nota)
+
+vai dar erro porquê é somente leitura
+
+Ou seja na função na comParametro.jsx não posso alterar diretamente o valor em uma função, para
+alterar teria que alterar em index.js direto.
+

@@ -1,0 +1,29 @@
+Nessa aula vamos criar um novo componente chamado Fragmento.jsx, vamos criar dessa forma:
+
+import React from 'react'
+
+export default function Fragmento(props){
+    return (
+        <div>
+            <h2>Fragmento</h2>
+            <p>Cuidado com esse erro</p>
+        </div>
+    )
+}
+
+Após isso precisamos importar ele no nosso index.js
+
+Porém e se caso eu não quisesse envolver o meu h2 e o meu p dentro de uma div, ai podemos usar o React.fragment, dessa forma:
+
+import React from 'react'
+
+export default function Fragmento(props){
+    return (
+        <React.Fragment>
+            <h2>Fragmento</h2>
+            <p>Cuidado com esse erro</p>
+        </React.Fragment>
+    )
+}
+
+substituimos a div por React.Fragment
