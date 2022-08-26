@@ -1,0 +1,47 @@
+Vamos tirar nosso código de dentro de index.js nessa auula e vamos criar um App.jsx como se fosse um
+componente, que vai receber todo nosso código. Dentro de App todo o código inclusive com os imports
+vão estar dessa forma:
+
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+import Fragmento from './components/basicos/Fragmento.jsx'
+
+export default function App(props){
+    <div id="app">
+    <h1>Fundamentos React</h1>
+    <Fragmento></Fragmento>
+    <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10"/>
+    <ComParametro titulo="Notas alunos" aluno="Laura" nota="8"/>  
+    <Primeiro></Primeiro> 
+    </div>
+}
+
+Porém vamos simplificar eles
+
+► obs: Quando temos o export default podemos utilizar funções anônimas, então não precisamos declarar tudo
+
+
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+import Fragmento from './components/basicos/Fragmento.jsx'
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    return (
+        <div id="app">
+            <h1>Fundamentos React (Arrow)</h1>
+            <Fragmento></Fragmento>
+            <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10" />
+            <Primeiro></Primeiro>
+        </div>
+    );
+}
+
+tiramos então o nome função, tiramos os parâmetro e é isso
+
+obs: para o vscode formatar o código é Alt + Shift + F
