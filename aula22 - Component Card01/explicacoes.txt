@@ -1,0 +1,128 @@
+Nessa aula vamos inicar a organização do conteúdo da nossa página, primeiro vamos criar dentro de components uma pasta chamada layout para 
+fazer a separação.
+
+dentro de layout vamos criar o Card.jsx.
+
+Dentro de Card.jsx vamos criar o seguinte código:
+
+import React from "react";
+
+export default function Card(props) {
+    return (
+        <div>
+            <div>Conteúdo</div>
+            <div>{props.titulo}</div>
+        </div>
+        )
+}
+
+e vamos importar ela dentro do nosso App.jsx, que está toda a base da nossa página, para isso vamos dar o import
+
+->>>> import Card from './components/layout/Card.jsx'
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    return (
+        <div id="app">
+            <h1>Fundamentos React (Arrow)</h1>
+            ->>>> <Card titulo="Exemplo de Card"></Card>
+            <Fragmento></Fragmento>
+            <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10" />
+            <Primeiro></Primeiro>
+            <Aleatorio min={10} max={60} />
+        </div>
+    );
+}
+
+-----------------------------------------------------------
+
+Agora vamos adicionar um estilo ao nosso site, para isso vamos criar dentro da mesma pasta layout um Card.css
+
+Nele vamos adicionar um css normal, segue o css:
+
+.Card{
+    background-color:red;
+    border-radius: 10px;
+    overflow: hidden;
+    border:3px solid red;
+}
+
+.Card .Title{
+    background-color: red;
+    padding:5px 0px;
+    display:flex;
+    justify-content: center;
+}
+
+.Card .Content {
+    background-color: #fff;
+    color:#000;
+    padding:20px;
+}
+
+E no Card.jsx, vamos adicionar as classes as tags para aplicar essas alterações, porém no js a palavra class é 
+reservada, então usamos a tag, className, segue o código como ficou dentro de Card.jsx
+
+import React from "react";
+import './Card.css';
+
+export default function Card(props) {
+    return (
+        <div className="Card">
+            <div className="Title">Conteúdo</div>
+            <div className="Content">{props.titulo}</div>
+        </div>
+        )
+}
+
+-------------------------------------------------------------
+
+Agora dentro do meu App.jsx quero começar a organizar os meus componentes, Vou colocar o componente do desafio aleatório
+dentro desse meu primeiro card, dessa forma:
+
+<Card titulo="Desafio  Aleatório">
+                <Aleatorio min={10} max={60} />
+</Card>
+
+
+Porém da forma que está vai aparecer ainda apenas conteúdo dentro do meu card, e não as informações desse meu componente
+Aleatório, para aparecer, temos que ir dentro do nosso componente Card, e usar um novo comando que é o principal dessa aula
+que é o {props.children} ou seja são os filhos desse componente Card.
+
+
+Após isso vai ficar dentro do card, aparecendo o conteúdo do nosso componente.
+--------------------------------------------------------------
+
+Após isso vai ficar mais fácil organizar todo nosso conteúdo, colocando todos os componentes dentro do nosso card.
+
+Vai ficar dessa forma:
+
+import React from 'react'
+
+import Primeiro from './components/basicos/Primeiro'
+import ComParametro from './components/basicos/ComParametro'
+import Fragmento from './components/basicos/Fragmento.jsx'
+import Aleatorio from './components/basicos/Aleatorio'
+import Card from './components/layout/Card.jsx'
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    return (
+        <div id="app">
+            <h1>Fundamentos React (Arrow)</h1>
+            <Card titulo="Desafio  Aleatório">
+                <Aleatorio min={10} max={60} />
+            </Card>
+
+            <Card titulo="Fragmento"><Fragmento></Fragmento></Card>
+            
+            <Card titulo="ComParametro"><ComParametro titulo="Notas alunos" aluno="Matheus" nota="10" /></Card>
+            
+            <Card titulo="Primeiro Componente"><Primeiro></Primeiro></Card>
+            
+            
+        </div>
+    );
+}
