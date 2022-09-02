@@ -1,0 +1,77 @@
+Nessa aula vamos ajustar o estilo das nossas páginas, vamos primeiro criar um App.css para mexer no estilo
+da nossa página App.jsx e vamos deixar os itens como flex, segue código css:
+
+.App .Cards{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+Para importar ele e ajustar nosso código, vamos criar uma nova div e vamos organizar nossas classes
+e nossos componentes dentro do nosso App.jsx.
+
+Primeiro vamos importar nossa nova folha de estilo, App. css e  depois vamos ajustas, segue código:
+
+import React from 'react';
+
+import Primeiro from './components/basicos/Primeiro';
+import ComParametro from './components/basicos/ComParametro';
+import Fragmento from './components/basicos/Fragmento.jsx';
+import Aleatorio from './components/basicos/Aleatorio';
+import Card from './components/layout/Card.jsx';
+import "./App.css";
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    return (
+        <div className="App">
+            <h1>Fundamentos React</h1>
+
+            <div className="Cards">
+
+            <Card titulo="Desafio  Aleatório">
+                <Aleatorio min={10} max={60} />
+            </Card>
+
+            <Card titulo="Fragmento"><Fragmento></Fragmento></Card>
+            
+            <Card titulo="ComParametro"><ComParametro titulo="Notas alunos" aluno="Matheus" nota="10" /></Card>
+            
+            <Card titulo="Primeiro Componente"><Primeiro></Primeiro></Card>
+            </div>
+            
+            
+            
+        </div>
+    );
+}
+
+
+Após isso eles vão ficar alinhados com o display flex, porém nossos cards ainda estão estranhos, para
+isso vamos mexer agora no Card.css que está dentro do nosso src -> component -> layout
+
+.Card{
+    background-color:red;
+    border-radius: 10px;
+    overflow: hidden;
+    border:3px solid red;
+    margin:10px;
+    display:flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.Card .Title{
+    background-color: red;
+    padding:5px 0px;
+    display:flex;
+    justify-content: center;
+}
+
+.Card .Content {
+    flex-grow: 1;/*Ele vai fazer o conteúdo crescer até o final do card*/
+    background-color: #fff;
+    color:#000;
+    padding:20px;
+}

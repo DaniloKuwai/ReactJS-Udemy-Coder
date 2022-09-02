@@ -1,0 +1,90 @@
+Nessa aula, vamos aprender como alterar as cores dos cards especficamente cada um,
+primeiro nós precisamos no nosso arquivo App.jsx dentro do componente passar o atributo
+color com as cores.
+
+Para isso passamos o atributo color dentro do nosso componente Card.jsx
+
+export default () => {
+    return (
+        <div className="App">
+            <h1>Fundamentos React</h1>
+
+            <div className="Cards">
+
+            <Card titulo="#04 - Desafio  Aleatório" color="#FA6900">
+                <Aleatorio min={10} max={60} />
+            </Card>
+
+            <Card titulo="#03 - Fragmento" color="#E94C6F">
+                <Fragmento></Fragmento>
+            </Card>
+            
+            <Card titulo="#02 - ComParametro" color="#E8B71A">
+                <ComParametro titulo="Notas alunos" aluno="Matheus" nota="10" />
+            </Card>
+            
+            <Card titulo="#01 -Primeiro Componente" color="#588C73">
+                <Primeiro>
+                </Primeiro>
+            </Card>
+            
+            </div>
+            
+            
+            
+        </div>
+    );
+
+    Após isso precisamos mexer na função para eles para o nosso componente Card.jsx
+    receber as cores:
+
+    import React from "react";
+import './Card.css';
+
+export default function Card(props) {
+
+    const cardStyle = {
+        backgroundColor:props.color || '#F00',
+        borderColor: props.color || '#F00',
+    }
+
+    return (
+        <div className="Card" style={cardStyle}>
+            <div className="Title">{props.titulo}</div>
+            <div className="Content">{props.children}</div>
+        </div>
+        )
+}
+
+para isso nós criamos uma constante, porquê não podemos esquecer que é um arquivo js
+e não um css, para isso não podemos utilizar  diretamente um background-color, temos
+que usar como objeto igual o exemplo: backgroundColor: e o valor, essa condicional que
+nós colocamos é para o caso o usuário não digite a cor vamos supor, e no final colocamos
+nosso objeto dentro da nossa div do card, colocando cor de fundo no topo ee nas bordas.
+
+Ai podemos tirar nossas cores diretas do nosso Card.css, vai ficar dessa forma agora objeto
+o nosso CSS.
+
+.Card{
+    border-radius: 10px;
+    overflow: hidden;
+    border:3px solid;
+    margin:10px;
+    display:flex;
+    flex-direction: column;
+    min-width: 500px;
+    max-width: 500px;
+}
+
+.Card .Title{
+    padding:5px 0px;
+    display:flex;
+    justify-content: center;
+}
+
+.Card .Content {
+    flex-grow: 1;/*Ele vai fazer o conteúdo crescer até o final do card*/
+    background-color: #fff;
+    color:#000;
+    padding:20px;
+}
