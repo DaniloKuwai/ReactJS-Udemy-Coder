@@ -1,0 +1,48 @@
+Obs: Para fazer comentários no React, fazmos dessa forma
+
+{/*Coloca tudo que você quiser dentro como comemtário*/}
+
+Nessa aula vamos continuar entendendo como vamos manipulas elementos pais para filhos, a primeira
+forma nova de acessar um elemento pai seria dessa forma dentro do Familia.jsx:
+
+import React from "react";
+
+export default function Familia(props){
+    return(
+        <div>
+            {React.cloneElement(props.children, props)}
+            {/*No caso com esse comando React.cloneElement, estamos clonando as propriedades de props
+               Podendo assim pegar o filho do elemento pai, no caso <FamiliaMembro nome="Pedro" > e com o props
+               estamos pegando o elemento pai também no caso <Familia sobrenome="Ferreira">
+               
+               O resultado vai ser Pedro Ferreira, porém isso funciona quando temos apenas um elemento.
+            */ }
+        </div>
+    )
+}
+
+Como esse método React.cloneElement só funciona para um elemento, vamos ver uma nova função para quando temos
+mais de uma propriedade:
+
+import React from "react";
+import { cloneElement } from "react";
+
+export default function Familia(props){
+    return(
+        <div>
+            {
+                React.Children.map(props.children,(child)=>{
+                    return cloneElement(child,props)
+                })
+            }
+        </div>
+
+    )
+}
+
+// eslint-disable-next-line no-lone-blocks
+{/*
+                    Agora vamos usar o Children.map, que serve para mapear arrays dentro de outros arrays
+                    no caso ele vai ler o array que teem o props.children e vai passar como parâmetro todos
+                    os filhos dentro da variável child, e vai retornar com o cloneElement os valores das variáveeis
+            */}

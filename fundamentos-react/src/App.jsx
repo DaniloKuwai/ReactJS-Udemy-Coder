@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Familia from './components/basicos/Familia.jsx';
+import FamiliaMembro from './components/basicos/FamiliaMembro';
 import Primeiro from './components/basicos/Primeiro';
 import ComParametro from './components/basicos/ComParametro';
 import Fragmento from './components/basicos/Fragmento.jsx';
@@ -18,7 +19,11 @@ export default () => {
             <div className="Cards">
 
             <Card titulo="#05 - Componente com filhos" color="#00c8f8">
-                <Familia sobrenome="Ferreira"></Familia>
+                <Familia sobrenome="Ferreira">
+                <FamiliaMembro nome="Pedro" ></FamiliaMembro>
+                <FamiliaMembro nome="Ana" ></FamiliaMembro>
+                <FamiliaMembro nome="Gustavo" sobrenome="Silva"></FamiliaMembro>
+                </Familia>
             </Card>    
 
             <Card titulo="#04 - Desafio  Aleatório" color="#FA6900">
