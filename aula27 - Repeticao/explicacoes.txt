@@ -45,3 +45,6 @@ E vamos importar ela dentro do nosso arquivo principal o App.jsx dessa forma:
             </Card>  
 
 Com isso vamos conseguir mostrar nossa lista de arrays que foi setado dentro de alunos.js
+
+Assim automatizamos nosso leitura do array e qualquer coisa que adicionamos já foi ser apresentado na lista
+da nossa página principal.

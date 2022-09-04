@@ -9,4 +9,5 @@ export default [
     {id:7 , nome: 'Cassia', nota:4.2},
     {id:8 , nome: 'Jenny', nota:8.2},
     {id:9 , nome: 'Silvia', nota:7.2},
+    {id:10 , nome: 'Novaes', nota:8.9},
 ]

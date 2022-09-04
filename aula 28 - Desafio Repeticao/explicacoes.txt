@@ -1,0 +1,44 @@
+Nesse desafio temos que criar um laço de repetição para apresentar os produtos na tela.
+Primeiro vamos criar dentro de data o arquivo produtos.js, com os seguintes itens:
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+    {id:1,produto:'Notebook',preco:4400},
+    {id:2,produto:'Geladeira',preco:2800},
+    {id:3,produto:'Microondas',preco:1400},
+    {id:4,produto:'Cafeteira',preco:500},
+    {id:5,produto:'Aquecedor',preco:250},
+    {id:6,produto:'Ventilador',preco:80},
+    {id:7,produto:'Fogão',preco:900},
+    {id:8,produto:'Panela',preco:180},
+]
+
+Após a criação vamos criar o TabelaProdutos.jsx dentro de src -> components -> repeticao
+
+Nele vamos extrair os itens dessa lista:
+
+import React from "react";
+import produtos from '../../data/produtos'
+
+export default function TabelaProdutos(props){
+    const listprod = produtos.map(produtos =>{
+        return(
+            <li key={produtos.id}>
+                {produtos.id} {produtos.produto} {produtos.preco}
+            </li>
+        );
+    });
+    return (
+        <div>
+            <ul style={{listStyle:'none'}}>
+                {listprod}
+            </ul>
+        </div>
+    )
+}
+
+Depois basta no nosso App.jsx, só colocar ele dentro de um card e chamar o component.
+
+<Card titulo="#07 - Desafio Repetição" color="#FF4C68">
+                <TabelaProdutos></TabelaProdutos>
+            </Card>
