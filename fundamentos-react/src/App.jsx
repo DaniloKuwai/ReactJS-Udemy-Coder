@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+import ListaAlunos from './components/repeticao/ListaAlunos'
 import Familia from './components/basicos/Familia.jsx';
 import FamiliaMembro from './components/basicos/FamiliaMembro';
 import Primeiro from './components/basicos/Primeiro';
@@ -17,6 +19,10 @@ export default () => {
             <h1>Fundamentos React</h1>
 
             <div className="Cards">
+
+            <Card titulo="#06 - Repeticão" color="#FF4C65">
+                <ListaAlunos></ListaAlunos>
+            </Card>    
 
             <Card titulo="#05 - Componente com filhos" color="#00c8f8">
                 <Familia sobrenome="Ferreira">

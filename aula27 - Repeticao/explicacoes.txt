@@ -1,0 +1,47 @@
+Vamos criar primeiro uma lista dentro de src/data e o arquivo alunos.js só para fazer a extração
+dentro dele vai ter o seguinte conteúdo:
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+    {id:1 , nome: 'Ana', nota:9.2},
+    {id:2 , nome: 'Carlos', nota:9.8},
+    {id:3 , nome: 'Roberto', nota:8.2},
+    {id:4 , nome: 'Maria', nota:7.2},
+    {id:5 , nome: 'Mara', nota:9.5},
+    {id:6 , nome: 'Mari', nota:6.2},
+    {id:7 , nome: 'Cassia', nota:4.2},
+    {id:8 , nome: 'Jenny', nota:8.2},
+    {id:9 , nome: 'Silvia', nota:7.2},
+]
+
+Após isso dentro de ListaAlunos.jsx, Vamos ajustar nossa função para conseguir extrair essa lista
+dando um import para importar essa lista de alunos.js.
+
+import React from "react";
+import alunos from '../../data/alunos'
+
+export default function ListaAlunos(props){
+    const lis = alunos.map(aluno=>{
+        return (
+            <li key={aluno.id}>
+            {aluno.id} {aluno.nome} {aluno.nota}
+            </li>
+        );
+        
+    });
+    return(
+        <div>
+            <ul style={{listStyle:'none'}}>
+                {lis}
+            </ul>
+        </div>
+    )
+}
+
+E vamos importar ela dentro do nosso arquivo principal o App.jsx dessa forma:
+
+<Card titulo="#06 - Repeticão" color="#FF4C65">
+                <ListaAlunos></ListaAlunos>
+            </Card>  
+
+Com isso vamos conseguir mostrar nossa lista de arrays que foi setado dentro de alunos.js
