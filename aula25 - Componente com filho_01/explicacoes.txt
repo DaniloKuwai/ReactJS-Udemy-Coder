@@ -1,0 +1,53 @@
+Nessa aula vamos entender o conceito de pai e filho, vamos criar 2 arquivos
+
+Familia.jsx
+FamiliaMembro.jsx
+
+No Familia.jsx, vamos criar uma função:
+
+import React from "react";
+import FamiliaMembro from './FamiliaMembro';
+
+export default function Familia(props){
+    return(
+        <div>
+            <FamiliaMembro nome="Pedro" sobrenome={props.sobrenome}></FamiliaMembro>
+            <FamiliaMembro nome="Ana" {...props}></FamiliaMembro>
+            <FamiliaMembro nome="Gustavo" sobrenome="Silva"></FamiliaMembro>
+        </div>
+    )
+}
+
+Nessa função vemos como trabalhar com a função FamiliaMembro, passando o sobrenome diretamente
+quando chamamos o objeto FamiliaMembro, porém também temos a forma chamando o props.sobrenome,
+quee vai puxar diretamente da outra propriedade pai dentro de App.jsx que já está setado o sobrenome,
+ou a forma spread  {...props} que vai pegar tudo que tiver sido passado como parâmetro para a função,
+e vai atribuit diretamente.
+
+Segue código do FamiliaMembro:
+
+import React from "react";
+
+export default function FamiliaMembro(props){
+    return (
+        <div>
+            {props.nome}<strong>{props.sobrenome}</strong>
+        </div>
+        
+    )
+}
+
+Nesse aqui só estamos setando a função que vai ser mostrada dentro do card, a partir dos parâmetros das
+funções pais, primeira função pai seria a Familia(props) e a função pai da Familia(props) é o 
+<Card titulo="#05 - Componente com filhos" color="#00c8f8">
+                <Familia sobrenome="Ferreira"></Familia>
+            </Card>  
+
+ Que está setadoo em App.jsx
+
+
+ Resumindo, então temos 3 formas de fazer a chamada do valor nas funções Pai, primeiro do método normal,
+ passando um parâmetro por exemploo sobrenome="..."
+ Ou via parâmetros, pelo {props.sobrenome}
+
+ Ou via spread {...}           

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Familia from './components/basicos/Familia.jsx';
 import Primeiro from './components/basicos/Primeiro';
 import ComParametro from './components/basicos/ComParametro';
 import Fragmento from './components/basicos/Fragmento.jsx';
@@ -15,6 +16,10 @@ export default () => {
             <h1>Fundamentos React</h1>
 
             <div className="Cards">
+
+            <Card titulo="#05 - Componente com filhos" color="#00c8f8">
+                <Familia sobrenome="Ferreira"></Familia>
+            </Card>    
 
             <Card titulo="#04 - Desafio  Aleatório" color="#FA6900">
                 <Aleatorio min={10} max={60} />
