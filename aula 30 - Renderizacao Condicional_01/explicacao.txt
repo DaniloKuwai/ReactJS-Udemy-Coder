@@ -1,0 +1,24 @@
+Nessa aula vamos começar a trabalhar com condicionais, para isso primeiro vamos criar em
+src -> componentes -> condicional o ParOuImpar.jsx, nele vai conter o seguinte código
+
+import React from "react";
+
+export default function ParOuImpar(props){
+    const isPar = props.numero % 2 === 0
+    return (
+        <div>
+            {isPar ? <span>Par</span> : <span>Impar</span>}   
+        </div>
+    )
+}
+
+e após isso vamos implementar ele no nosso App.jsx dessa forma
+
+Card titulo="#08 - Par Ou impar" color="#982395">
+                <ParOuImpar numero={20}></ParOuImpar>
+            </Card>
+
+
+Nunca esquecendo de dar o import dessa forma:
+
+import ParOuImpar from './components/condicional/ParOuImpar';

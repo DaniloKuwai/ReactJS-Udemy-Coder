@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ParOuImpar from './components/condicional/ParOuImpar';
 import TabelaProdutos from './components/repeticao/TabelaProdutos'
 import ListaAlunos from './components/repeticao/ListaAlunos'
 import Familia from './components/basicos/Familia.jsx';
@@ -19,6 +20,10 @@ export default () => {
             <h1>Fundamentos React</h1>
 
             <div className="Cards">
+
+            <Card titulo="#08 - Par Ou impar" color="#982395">
+                <ParOuImpar numero={20}></ParOuImpar>
+            </Card>    
             
             <Card titulo="#07 - Desafio Repetição" color="#FF4C68">
                 <TabelaProdutos></TabelaProdutos>
