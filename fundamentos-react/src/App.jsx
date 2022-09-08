@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Usuarioinfo from './components/condicional/Usuarioinfo.jsx';
 import ParOuImpar from './components/condicional/ParOuImpar';
 import TabelaProdutos from './components/repeticao/TabelaProdutos'
 import ListaAlunos from './components/repeticao/ListaAlunos'
@@ -23,6 +24,8 @@ export default () => {
 
             <Card titulo="#08 - Par Ou impar" color="#982395">
                 <ParOuImpar numero={20}></ParOuImpar>
+                <Usuarioinfo usuario={{ nome:'Danilo'}}></Usuarioinfo>
+                <Usuarioinfo usuario={{ nome:'Matheus'}}></Usuarioinfo>
             </Card>    
             
             <Card titulo="#07 - Desafio Repetição" color="#FF4C68">

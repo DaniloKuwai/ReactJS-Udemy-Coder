@@ -1,0 +1,39 @@
+Nessa aula, vamos fazer uma condicional com if, primeiro vamos criar um componente em js mesmo
+chamar if.js, segue código dele:
+
+export default function Componente(props){
+    if(props.test){
+        return props.children
+    }else{
+        return false
+    }
+}
+
+Agora precisamos criar um Usuarioinfo.jsx onde vai ser o componente que vai interligar com o 
+nosso App.jsx para coletar os dados do usuário, segue código e também usando condicionais.
+
+import React from "react";
+import If from './if.js';
+
+export default function Usuarioinfo(props){
+    const usuario = props.usuario || {}
+    return(
+        <div>
+            <If test={usuario && usuario.nome}>
+            Seja bem vindo <strong>{ props.usuario.nome }</strong>!
+            </If>
+        </div>
+    )
+}
+
+E Após isso vamos colocar dentro do nosso App.jsx o nosso componente, dentro do card da aula
+passada:
+
+<Card titulo="#08 - Par Ou impar" color="#982395">
+                <ParOuImpar numero={20}></ParOuImpar>
+                <Usuarioinfo usuario={{ nome:'Danilo'}}></Usuarioinfo>
+                <Usuarioinfo usuario={{ nome:'Matheus'}}></Usuarioinfo>
+            </Card> 
+
+Com isso podemos fazer condicionais por exemplo, se o nome estiver vazio mostra outra coisa, usando
+o nosso componente criado em js.            
