@@ -1,0 +1,61 @@
+Nessa aula basicamente vamos fazer 2 componentes como if e else, não é usual isso na proogramação.
+
+Basicamente vamos mexer no if mais não vamos criar um componente único como ELSE, fazendo dessa forma
+vamos apenas criar um componente exportado como else e chamar ele dentro de usuário info.
+
+Dentro de App.jsx, vamoos apenas colocar um atributo no nosso App para o componente, Usuarioinfo.jsx
+trabalhar:
+
+<Usuarioinfo usuario={{ nome: 'Dan'}}></Usuarioinfo>
+
+Dentro do if vamos criar nossas condições, usando o props.children para ler todos os filhos de if e else
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default props =>{
+    const elseChild = props.children.filter(child =>{
+        return child.type && child.type.name === 'Else'
+    })[0]
+
+    const ifChildren = props.children.filter(child =>{
+        return child !== elseChild
+    })
+
+    console.log(elseChild)
+    if(props.test){
+        return ifChildren    
+    }else if(elseChild){
+        return elseChild
+    }
+    else{
+        return false
+    }
+}
+
+export const Else = props => props.children
+
+e Após isso vamos ajustar nossos componentes criados em if.js para Usuarioinfo.jsx que é só montar
+porquê a lógica toda está no if.js
+
+segue código do nosso Usuarioinfo.jsx
+
+import React from "react";
+import If, { Else } from "./if";
+
+
+export default (props) => {
+
+    const usuario = props.usuario || {};
+
+    return (
+            <div>
+                <If test={usuario && usuario.nome}>
+                    Seja Bem vindo <strong>{usuario.nome}</strong>
+                    <Else>
+                        Seja bem vindo <strong>Amigão</strong>
+                    </Else>
+                </If>
+
+            </div>
+    )
+}

@@ -24,8 +24,7 @@ export default () => {
 
             <Card titulo="#08 - Par Ou impar" color="#982395">
                 <ParOuImpar numero={20}></ParOuImpar>
-                <Usuarioinfo usuario={{ nome:'Danilo'}}></Usuarioinfo>
-                <Usuarioinfo usuario={{ nome:'Matheus'}}></Usuarioinfo>
+                <Usuarioinfo usuario={{ nome: 'Dan'}}></Usuarioinfo>
             </Card>    
             
             <Card titulo="#07 - Desafio Repetição" color="#FF4C68">
