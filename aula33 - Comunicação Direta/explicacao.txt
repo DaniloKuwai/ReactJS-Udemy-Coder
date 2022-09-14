@@ -1,0 +1,44 @@
+Comunicação entre componentes
+
+A nossa aplicação é uma árvore de componentes basicamente
+
+A comunicação direta nada mais é que por exemplo um componente se comunicar diretamente com o outro,
+Exemplo vamos criar 2 novos componentes dentro da pasta componentes, comunicacao. o Primeiro vai ser
+o DiretaFilho.jsx e o segundo vai ser o DiretaPai.jsx
+
+No DiretaPai vamos importar o DiretaFilho, o código vai ser assim:
+
+import React from "react";
+import DiretaFilho from './DiretaFilho'
+
+export default function DiretaPai(props){
+    return (
+        <div>
+            <DiretaFilho nome="Matheus" idade={20} nerd={true}></DiretaFilho>
+            <DiretaFilho nome="Henrique" idade={18} nerd={false}></DiretaFilho>
+        </div>
+    )
+}
+
+No Componente pai, vamos passar os parâmetros apenas usando o componente filho como método apenas, No
+componente filho vamos ter o seguinte código:
+
+import React from "react";
+
+export default function DiretaFilho(props){
+    return (
+        <div>
+            <span>{props.nome}</span>
+            <span><strong>{props.idade}</strong></span>
+            <span>{props.nerd ? 'Verdadeiro' : 'False'}</span>        
+        </div>
+    )
+}
+
+Ou seja, setamos todo o código no filho e na propriedade Pai passamos apenas os parâmetro chamando o 
+componente filho, essa é a comunicação direrta. E para renderizar na página, colocamos sempre no nosso
+App.jsx:
+
+<Card titulo="#09 - Comunicação Direta" color="#59323C">
+                <DiretaPai></DiretaPai>
+            </Card>
