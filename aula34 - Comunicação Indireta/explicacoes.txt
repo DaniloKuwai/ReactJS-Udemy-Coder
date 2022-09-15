@@ -1,0 +1,50 @@
+Nessa aula vamos ver como um componente pai pode mandar parâmetros para o filho, isso
+é a comunicação indireta a direta só para relembrar é a normal o filho manda informações
+para o pai, segue os códigos dos arquivos indiretaPai e IndiretaFilho
+
+indiretaPai:
+
+import React from "react";
+import IndiretaFilho from './IndiretaFilho'
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default props => {
+
+    //nome idade nerd
+
+    function fornecerInformacoes(nome,idade,nerd){
+        console.log(nome,idade,nerd)
+    }
+
+    return (
+        <div>
+            <div>Pai</div>
+            <IndiretaFilho quandoClicar={fornecerInformacoes}></IndiretaFilho>
+        </div>
+    )
+}
+
+IndiretaFilho:
+
+import React from "react";
+
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default props => {
+    return (
+        <div>
+            <div>Filho</div>
+            <button onClick={
+                function (e){
+                    props.quandoClicar('João',53,true)
+                }
+            }>Fornecer Informações</button>
+        </div>
+    )
+}
+
+E vamos adicionar no App.jsx um novo card:
+
+<Card titulo="#10 - Comunicação Indireta" color="#8BAD39">
+                <IndiretaPai></IndiretaPai>
+            </Card>

@@ -13,6 +13,7 @@ import Fragmento from './components/basicos/Fragmento.jsx';
 import Aleatorio from './components/basicos/Aleatorio';
 import Card from './components/layout/Card.jsx';
 import "./App.css";
+import IndiretaPai from './components/comunicacao/IndiretaPai';
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -22,6 +23,10 @@ export default () => {
             <h1>Fundamentos React</h1>
 
             <div className="Cards">
+
+            <Card titulo="#10 - Comunicação Indireta" color="#8BAD39">
+                <IndiretaPai></IndiretaPai>
+            </Card>   
 
             <Card titulo="#09 - Comunicação Direta" color="#59323C">
                 <DiretaPai></DiretaPai>
