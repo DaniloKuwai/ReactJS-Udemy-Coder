@@ -1,0 +1,38 @@
+Nessa aula, vamos ver que no React nós não conseguimos alterar o componente diretamente
+pela parte gráfica, um exemplo no HTML é que se colocarmos uma tag input nós vamos conseguir
+escrever diretamente na caixa do input, porém no react a caixa até aparece porém nós não conseguimos
+alterar um componente controlado. Ou seja nós não conseguimos mudar um estado de um componente, diretamente
+pela interface. A interface gráfica não muda um estado de um componente, porém como fazemos isso no react
+
+Através dos eventos:
+
+import React, {useState} from "react";
+import "./input.css"
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default props =>{
+
+    const [valor , setValor] = useState('Inicial')
+
+    function quandoMudar(e){
+        setValor(e.target.value)
+    }
+
+    
+    return (
+        <div className="input">
+            <input value={valor} onChange={quandoMudar}/>
+        </div>
+    )
+}
+
+então eu construi um função quandoMudar(e), que com o evento de onChange(quando tem alguma mudança) ele vai chamar a minha função
+e com o setValor e o método e.target.value eu vou substituir o valor digitado
+
+Resumindo, ele só vai refletir a mudança na parte visual se o estado modificar.
+
+Também uma outra forma de criar um componente não controlado é criando uma tag com o undefined
+
+<input value={undefined} />
+
+dessa forma, porém com isso não conseguimos extrair valores.
