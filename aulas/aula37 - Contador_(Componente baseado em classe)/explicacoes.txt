@@ -1,0 +1,195 @@
+Nessa aula vamos criar um contador e vamos usar classes agora, qual a diferença no react?
+Na verdade nenhuma grande diferença, você pode usar funções como aprendemos ou pode uttilizar
+classes também, depende do hábito e costumes.
+
+Vamoos criar dentro de components uma nova pasta chamada contador, nela vamos criar o Contador.jsx
+
+primeiro vamos chamar import do react e vamos iniciar criando nossa classe
+
+import React from "react";
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default class extends React.Component {
+    render(){
+        //o método render é necessário dentro da nossa classe para renderizar
+        return(
+            <div>
+                Contador
+            </div>
+        )
+    }
+}
+
+próximo código agora setando valores dentro do componente já renderizado
+
+import React from "react";
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default class extends React.Component {
+
+    //para criar um estado dentro da nossa classe utilizamos o método state
+    //vamos definir o numero dentro do state a princípio 0, porém no App vamos setar para iniciar a partir de 10
+    //para pegar o valor setado noo componente dentro de App usamos o método this que referencia a estância desse objeto em questão,
+    //então pegamos o this para refenciar, juntamos com o props para acessar os atributos do componente e chamamos o parâmetro setado
+    //no componente, no caso esse: <Contador numeroInicial={10}></Contador>
+
+    state = {
+        numero: this.props.numeroInicial
+    }
+
+    render(){
+        return(
+            <div>
+                <h2>Contador</h2>
+                <p>{this.state.numero}</p>
+            </div>
+        )
+    }
+}
+
+//ou podemos usar um método construtor com o props
+
+constructor(props){
+        super(props)
+
+        this.state = {
+            numero: props.numeroInicial
+        }    
+    }
+
+    
+
+    render(){
+        return(
+            <div>
+                <h2>Contador</h2>
+                <p>{this.state.numero}</p>
+            </div>
+        )
+    }
+}
+
+Porém dessa forma fica mais complicado a sintaxe
+
+vamos usar o método normal:
+
+import React from "react";
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default class extends React.Component {
+ 
+        state = {
+            numero: this.props.numeroInicial
+        }    
+    //Agora vamos criar uma função para incrementar nosso contador, para isso como existe o 
+    //state, existe também o setState que altera o estado, nós não definimos essa função
+    //a gente recebe ela a partir do momento que usamos o extends na classe.   
+        inc(){
+            this.setState({
+                numero: this.state.numero + 1
+            })
+        }
+
+    render(){
+        return(
+            <div>
+                <h2>Contador</h2>
+                <p>{this.state.numero}</p>
+                <button onClick={this.inc}></button>
+            </div>
+        )
+    }
+}
+
+Porém nesse código o método this que se refere a função na verdade no momento de onclick não
+vai mais se refererir a função porquê o this sempre se refere a função e vai dar erro no caso.
+O ideal nesse caso seria usar as arrow function, que o this sempre vai se referir a essa função
+que está usando arrow
+
+Agora nosso contador está completo com incremento e decremento, alterei algumas escritas das classes porém
+não influencia no código:
+
+class Contador extends Component {
+ 
+        state = {
+            numero: this.props.numeroInicial || 0,
+            
+        };    
+        
+        inc = () => {
+            this.setState({
+                numero: this.state.numero + 1,
+            });
+        }
+
+        dec = () =>{
+            this.setState({
+                numero: this.state.numero -1,
+            })
+        }
+
+    render(){
+        return(
+            <div>
+                <h2>Contador</h2>
+                <h3>{this.state.numero}</h3>
+                <button onClick={this.inc}>+</button>
+                <button onClick={this.dec}>-</button>
+            </div>
+        );
+    }
+}
+
+export default Contador;
+
+Podemos também adicionar uma função que incrementa ou decrementa de 5 em 5 também.
+
+import React, {Component} from "react";
+
+// eslint-disable-next-line import/no-anonymous-default-export
+class Contador extends Component {
+ 
+        state = {
+            numero: this.props.numeroInicial || 0,
+            passo: this.props.passoInicial || 5,
+        };    
+        
+        inc = () => {
+            this.setState({
+                numero: this.state.numero + this.state.passo,
+            });
+        }
+
+        dec = () =>{
+            this.setState({
+                numero: this.state.numero - this.state.passo,
+            })
+        }
+
+        setPasso = (e) =>{
+            this.setState({
+                passo: + e.target.value,
+            });
+        }
+
+    render(){
+        return(
+            <div>
+                <h2>Contador</h2>
+                <h3>{this.state.numero}</h3>
+                <div>
+                    <label htmlFor="passoInput">Passo:</label>
+                    <input id="passoInput" type="number" 
+                    value={this.state.passo} onChange={this.setPasso}/>
+                </div>
+                <button onClick={this.inc}>+</button>
+                <button onClick={this.dec}>-</button>
+            </div>
+        );
+    }
+}
+
+export default Contador;
+
+
+
