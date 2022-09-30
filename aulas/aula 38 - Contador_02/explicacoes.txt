@@ -1,0 +1,103 @@
+Nessa aula, vamos separar o componente contador que nós montamos em outros componentes,
+tornando mais fácil a manipulação depois, vamos criar 3 arquivos, um para o display(Display.jsx)
+outro para o Formulário do número(PassoForm.jsx) e o outro para os Botoes(Botoes.jsx)
+
+Display.jsx:
+
+import React from "react";
+
+export default props =>{
+    return (
+        <div>
+            <h3>{props.numero}</h3>
+        </div>
+    )
+}
+
+PassoForm.jsx:
+
+import React from "react";
+
+export default props =>{
+    return (
+         <div>
+        <label htmlFor="passoInput">Passo:</label>
+         <input id="passoInput" type="number" 
+            value={props.passo} onChange={e => props.setPasso(+e.target.value)}/>
+        </div>
+    )
+}
+
+
+Botoes.jsx
+
+import React from "react";
+
+export default props =>{
+    return (
+        <div>
+            <button onClick={props.setInc}>+</button>
+            <button onClick={props.setDec}>-</button>
+        </div>
+    )
+}import React from "react";
+
+export default props =>{
+    return (
+        <div>
+            <button onClick={props.setInc}>+</button>
+            <button onClick={props.setDec}>-</button>
+        </div>
+    )
+}
+
+E o nosso Contador.jsx vai ficar dessa forma agora:
+
+import "./Contador.css"
+import React, {Component} from "react";
+
+
+import Display from "./Display";
+import Botoes from "./Botoes";
+import PassoForm from "./PassoForm";
+
+// eslint-disable-next-line import/no-anonymous-default-export
+class Contador extends Component {
+ 
+        state = {
+            numero: this.props.numeroInicial || 0,
+            passo: this.props.passoInicial || 5,
+        };    
+        
+        inc = () => {
+            this.setState({
+                numero: this.state.numero + this.state.passo,
+            });
+        }
+
+        dec = () =>{
+            this.setState({
+                numero: this.state.numero - this.state.passo,
+            })
+        }
+
+        setPasso = (novoPasso) =>{
+            this.setState({
+                passo: + novoPasso,
+            });
+        }
+
+    render(){
+        return(
+            <div className="Contador">
+                <h2>Contador</h2>
+                <Display numero={this.state.numero}></Display>
+                <PassoForm passo={this.state.passo} setPasso={this.setPasso} ></PassoForm>
+                <Botoes setInc={this.inc} setDec={this.dec}></Botoes>
+            </div>
+        );
+    }
+}
+
+export default Contador;
+
